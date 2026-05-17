@@ -122,21 +122,13 @@ jobs:
         run: |
           echo "STATUS_URL=${{ env.apiServer }}/api/updategh" >> $env:GITHUB_ENV
 
-      - name: Checkout source code
-        if: ${{ env.VERSION != 'master' }}
+      - name: Checkout source code from TajDesk fork
         uses: actions/checkout@v4
         with:
-          repository: rustdesk/rustdesk
-          ref: refs/tags/${{ env.VERSION }}
+          repository: elemeus90/rustdesk
+          ref: master
           submodules: recursive
-
-      - name: Checkout source code
-        if: ${{ env.VERSION == 'master' }}
-        uses: actions/checkout@v4
-        with:
-          repository: rustdesk/rustdesk
-          submodules: recursive
-
+          
       - name: Restore bridge files
         uses: actions/download-artifact@master
         with:
