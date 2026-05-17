@@ -30,21 +30,14 @@ jobs:
               extra-build-args: "",
             }
     steps:
-      - name: Checkout source code
-        if: ${{ inputs.version != 'master' }}
-        uses: actions/checkout@v4
-        with:
-          repository: rustdesk/rustdesk
-          ref: refs/tags/${{ inputs.version }}
-          submodules: recursive
-        
-      - name: Checkout source code
-        if: ${{ inputs.version == 'master' }}
-        uses: actions/checkout@v4
-        with:
-          repository: rustdesk/rustdesk
-          submodules: recursive
 
+      - name: Checkout source code from TajDesk fork
+        uses: actions/checkout@v4
+        with:
+          repository: elemeus90/rustdesk
+          ref: master
+          submodules: recursive
+          
       - name: Install prerequisites
         run: |
           sudo apt-get install ca-certificates -y
