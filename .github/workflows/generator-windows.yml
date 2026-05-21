@@ -296,9 +296,9 @@ jobs:
           targets: ${{ matrix.job.target }}
           components: "rustfmt"
 
-      - uses: Swatinem/rust-cache@v2
-        with:
-          prefix-key: windows-self-hosted
+      #- uses: Swatinem/rust-cache@v2
+      #  with:
+      #    prefix-key: windows-self-hosted
 
       - name: Setup vcpkg with Github Actions binary cache
         uses: lukka/run-vcpkg@v11
